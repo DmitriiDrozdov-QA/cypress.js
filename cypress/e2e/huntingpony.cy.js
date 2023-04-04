@@ -3,6 +3,7 @@ describe('Оформление заказа на huntingpony.com', function () {
          cy.visit('https://huntingpony.com');
          cy.get('[data-index="5"] > .header__collections-controls > .header__collections-link').click();
          cy.get('[data-product-id="339746828"] > .product-preview__content > .product-preview__area-title > .product-preview__title > a').click();
+         // cy.get('select[name =[data-option-bind="4168048"]').select('М = 34-40 см (окружность шеи)');
          cy.wait(5000);
          cy.get('.add-cart-counter__btn').click();
          cy.wait(5000);
@@ -21,14 +22,11 @@ describe('Оформление заказа на huntingpony.com', function () {
          cy.get('#shipping_address_street').type('Комсомольская');
          cy.get('#shipping_address_house').type('13');
          cy.get('#order_comment').type('Позвонить за 30 минут');
-         cy.get('.co-input--required > .co-input-select > .co-input-field').click()
-         cy.get('.co-input--required > .co-input-select > .co-input-field').contains('Мальчик').then(option => {
-
-             cy.wrap(option).contains('Мальчик');
-      
-            option[0].click();});
-         
-
+         cy.get('select[name ="order[fields_values_attributes][24333444][value]"]').select('Мальчик');
+         cy.get('#order_field_24333471').type('Харди');
+         // cy.get('#order_field_24333473').type('19.04.2021');
+         cy.get('#create_order').click();
+        
 
     })
 })
